@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <meta name="description" content="Dra. Eva M. Villa Laureano, MVZ - Atención médica veterinaria con enfoque preventivo y comunitario en Escobedo, Nuevo León.">
-    <title>Dra. Eva Villa · MVZ · Servicio social</title>
+    <meta name="description" content="Eva M. Villa Laureano, MVZ - Atención médica veterinaria con enfoque preventivo y comunitario en Escobedo, Nuevo León.">
+    <title>Eva M. Villa Laureano, MVZ | Medicina Veterinaria Preventiva</title>
     
     <!-- Google Fonts: Inter + Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -549,7 +549,7 @@
     <div class="container">
         <a href="#" class="logo">
             <i class="fas fa-heart-pulse"></i>
-            <span>Dra. Eva Villa</span>
+            <span>Eva Villa · MVZ</span>
         </a>
         <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menú">
             <i class="fas fa-bars"></i>
@@ -558,7 +558,7 @@
 </nav>
 
 <!-- ========== WHATSAPP FLOTANTE ========== -->
-<a href="https://w.app/347bhu" class="whatsapp-float" target="_blank">
+<a href="https://wa.me/528110419108" class="whatsapp-float" target="_blank">
     <i class="fab fa-whatsapp"></i>
     <span>WhatsApp</span>
 </a>
@@ -568,10 +568,10 @@
     <div class="container">
         <div class="hero-content">
             <img src="https://raw.githubusercontent.com/serviciosdigitalesmx/Dr-Eva-M.-Villa-Laureano/main/logo.png" 
-                 alt="Logo Dra. Eva Villa" class="hero-logo">
-            <h1>Dra. Eva M. Villa Laureano, MVZ</h1>
+                 alt="Logo Eva M. Villa Laureano, MVZ" class="hero-logo">
+            <h1>Eva M. Villa Laureano, MVZ</h1>
             <p class="hero-sub">Atención médica veterinaria con enfoque preventivo y comunitario.</p>
-            <a href="https://w.app/347bhu" class="btn-wa-large" target="_blank">
+            <a href="https://wa.me/528110419108" class="btn-wa-large" target="_blank">
                 <i class="fab fa-whatsapp"></i> Agendar consulta
             </a>
         </div>
@@ -583,7 +583,7 @@
     <div class="container">
         <h2>Sobre mí</h2>
         <div class="about-text">
-            <p>Soy la Dra. Eva Villa, médica veterinaria zootecnista, realizando mi servicio social profesional en Escobedo. Mi experiencia incluye la clínica diaria de perros y gatos, hospitalización, apoyo quirúrgico y toma de muestras diagnósticas. Me apasiona la prevención y el trabajo cercano con las familias para mantener sanos a sus compañeros de vida.</p>
+            <p>Eva Villa, Médica Veterinaria y Zootecnista, realizando mi servicio social profesional en Escobedo. Mi experiencia incluye la clínica diaria de perros y gatos, hospitalización, apoyo quirúrgico y toma de muestras diagnósticas. Me apasiona la prevención y el trabajo cercano con las familias para mantener sanos a sus compañeros de vida.</p>
             <div class="exp-badge">
                 <span class="badge"><i class="fas fa-dog"></i> Perros y gatos</span>
                 <span class="badge"><i class="fas fa-hospital"></i> Hospitalización</span>
@@ -638,7 +638,7 @@
             <span><strong>Col. Centro, Escobedo, N.L.</strong></span>
         </div>
         
-        <a href="https://w.app/347bhu" class="btn-contact-wa" target="_blank">
+        <a href="https://wa.me/528110419108" class="btn-contact-wa" target="_blank">
             <i class="fab fa-whatsapp"></i> +52 811 041 9108
         </a>
         
@@ -650,7 +650,7 @@
 
 <!-- ========== FOOTER ========== -->
 <footer class="footer-note container">
-    <p>© 2025 Dra. Eva Villa · Servicio social profesional · Escobedo, NL</p>
+    <p>© 2025 Eva M. Villa Laureano, MVZ · Servicio social profesional · Escobedo, NL</p>
 </footer>
 
 <!-- ========== JAVASCRIPT CON FICHAS PROGRESIVAS ========== -->
@@ -723,6 +723,9 @@
                 ]
             }
         ];
+
+        // ========== NÚMERO DE WHATSAPP (corregido) ==========
+        const whatsappNumber = '528110419108';
 
         // ========== RENDERIZAR SERVICIOS ==========
         const container = document.getElementById('servicesContainer');
@@ -871,17 +874,26 @@
                 }
             });
             
-            // Evento para enviar por WhatsApp con el nuevo link
+            // Evento para enviar por WhatsApp con los datos del formulario
             btnEnviar.addEventListener('click', () => {
+                // Construir mensaje con todas las respuestas
                 let mensaje = `🐾 *Ficha: ${serv.nombre}* 🐾\n\n`;
+                
+                // Agregar cada respuesta
                 estado.preguntas.forEach(p => {
                     if (estado.respuestas[p.campo]) {
-                        mensaje += `• ${p.etiqueta}: ${estado.respuestas[p.campo]}\n`;
+                        // Formatear la etiqueta para que sea más legible
+                        const etiquetaLimpia = p.etiqueta.replace('¿', '').replace('?', '');
+                        mensaje += `*${etiquetaLimpia}:* ${estado.respuestas[p.campo]}\n`;
                     }
                 });
-                mensaje += '\nQuedo atenta para agendar. ¡Gracias!';
                 
-                const url = `https://w.app/347bhu?text=${encodeURIComponent(mensaje)}`;
+                // Agregar mensaje de cierre
+                mensaje += `\n📍 *Ubicación:* Escobedo, Nuevo León\n`;
+                mensaje += `\n---\nEnviado desde la ficha de ${serv.nombre}. Quedo atenta para agendar. ¡Gracias!`;
+                
+                // Codificar el mensaje y abrir WhatsApp
+                const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(mensaje)}`;
                 window.open(url, '_blank');
             });
             
@@ -930,17 +942,17 @@
                     right: 0;
                     background: white;
                     padding: 1rem;
-                    box-shadow: var(--shadow-md);
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
                     z-index: 999;
                     border-radius: 0 0 24px 24px;
                 `;
                 tempMenu.innerHTML = `
                     <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem;">
-                        <li><a href="#inicio" style="text-decoration: none; color: var(--gris-texto);"><i class="fas fa-home"></i> Inicio</a></li>
-                        <li><a href="#sobre-mi" style="text-decoration: none; color: var(--gris-texto);"><i class="fas fa-user-md"></i> Sobre mí</a></li>
-                        <li><a href="#servicios" style="text-decoration: none; color: var(--gris-texto);"><i class="fas fa-list"></i> Servicios</a></li>
-                        <li><a href="#modelo" style="text-decoration: none; color: var(--gris-texto);"><i class="fas fa-heart"></i> Modelo</a></li>
-                        <li><a href="#contacto" style="text-decoration: none; color: var(--gris-texto);"><i class="fas fa-phone"></i> Contacto</a></li>
+                        <li><a href="#inicio" style="text-decoration: none; color: #2e3b3a; font-weight: 500;"><i class="fas fa-home" style="margin-right: 8px;"></i> Inicio</a></li>
+                        <li><a href="#sobre-mi" style="text-decoration: none; color: #2e3b3a; font-weight: 500;"><i class="fas fa-user-md" style="margin-right: 8px;"></i> Sobre mí</a></li>
+                        <li><a href="#servicios" style="text-decoration: none; color: #2e3b3a; font-weight: 500;"><i class="fas fa-list" style="margin-right: 8px;"></i> Servicios</a></li>
+                        <li><a href="#modelo" style="text-decoration: none; color: #2e3b3a; font-weight: 500;"><i class="fas fa-heart" style="margin-right: 8px;"></i> Modelo</a></li>
+                        <li><a href="#contacto" style="text-decoration: none; color: #2e3b3a; font-weight: 500;"><i class="fas fa-phone" style="margin-right: 8px;"></i> Contacto</a></li>
                     </ul>
                 `;
                 document.body.appendChild(tempMenu);
